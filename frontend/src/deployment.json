@@ -1,0 +1,9 @@
+{
+  "chainId": "onyx-1",
+  "rpcUrl": "https://rpc.onyx.testnets.gno.land",
+  "gnowebBase": "https://onyx.testnets.gno.land",
+  "deployerAddress": null,
+  "packagePath": null,
+  "realmPath": null,
+  "txHashes": {}
+}
