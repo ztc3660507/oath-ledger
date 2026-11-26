@@ -43,11 +43,31 @@ flowchart LR
 
 ## Packages & Realms (Gno.land `onyx-1` Namespace)
 
-| Component | Module Path | Purpose |
+| Component | Module Path | Live `onyx-1` Link |
 | --- | --- | --- |
-| **Pure Math Package** | `gno.land/p/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/escrowmath` | Zero-dust milestone splits, dispute split math, quorum validation, PoC XP/tiers, progress bars |
-| **Stateful Realm** | `gno.land/r/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/oathledger` | Native `ugnot` escrow, AVL state storage, M-of-N quorum voting, dispute arbitration, multi-route `Render()` |
+| **Pure Math Package** | `gno.land/p/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/escrowmath` | [View Package on gnoweb](https://onyx.testnets.gno.land/p/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/escrowmath) |
+| **Stateful Realm** | `gno.land/r/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/oathledger` | [Live Realm on gnoweb](https://onyx.testnets.gno.land/r/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/oathledger) |
 | **Companion Portal** | `frontend/` (React + Vite) | Live `onyx-1` RPC + `vm/qrender` viewer & interactive milestone quorum simulator |
+
+### Live `onyx-1` On-Chain Proof (Verified End-to-End Lifecycle)
+
+All contract deployment and multi-account lifecycle transactions are live and verifiable on `onyx-1`:
+- **Live Gnoweb Home**: `https://onyx.testnets.gno.land/r/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/oathledger`
+- **Live PoC Leaderboard**: `https://onyx.testnets.gno.land/r/g1ty0rp975ndkcse760v0zt659f4phs4z8lueud7/oathledger:leaderboard`
+- **On-Chain Telemetry**: `3` Total Pacts (`#1 COMPLETED`, `#2 ACTIVE` with Milestone 0 submitted, `#3 OPEN`), **`4.500000 GNOT`** active escrow locked, **`2.500000 GNOT`** atomically released to builder `g1kvv3gap7vu73e3w8l9lvaj0l2pz3pv43gmnxzz` (`370` PoC XP, `Apprentice` tier).
+
+| Step | Action | Block Height | Tx Hash (`onyx-1`) |
+| --- | --- | --- | --- |
+| Deploy Package | `addpkg` `escrowmath` | `#1415366` | `ssgayq33XaRNaK0sUOjgQ+javKcJ5O5Y8bD67I6C4ZU=` |
+| Deploy Realm | `addpkg` `oathledger` | `#1415367` | `0dueOtU3FhjvZ9GRFObDjBT8a1lWPSwi8qJ3/0iq/fI=` |
+| Pact #1 Created | `CreatePact` (`2.5 GNOT`, 40/60 split) | `#1423833` | `8hzjz5kh8+jdKLDfYi8QIsBb0FYvLX26CFwWKmQcmBQ=` |
+| Pact #1 Claimed | `ClaimPact(1)` by builder | `#1423834` | `6xjHDs41iDN816ak0+TtX/fV5iLxLGXY0H7pgTndnFE=` |
+| Pact #1 M0 Proof | `SubmitMilestone(1, 0)` | `#1423836` | `9YIDN5/xNouUIrC9c4Cd0ZZZ+oeK6gQ/4PncqO2tbhA=` |
+| Pact #1 M0 Release | `ApproveMilestone(1, 0)` → `1.0 GNOT` paid | `#1423838` | `J2aD5p/1SbPNWqnx0Crp4UckZl+FI4K3OIPQK+6+6aQ=` |
+| Pact #1 M1 Proof | `SubmitMilestone(1, 1)` | `#1423839` | `qXEP5o+1JNPTHiOfLsWj7/usAD/XW4YO7/KJ1yi2Trw=` |
+| Pact #1 M1 Release | `ApproveMilestone(1, 1)` → `1.5 GNOT` paid (`COMPLETED`) | `#1423840` | `KiEdH51t1s1cyzgFLC3yHSh0CX1O6ddYpuvPPEFoa7Y=` |
+| Pact #2 Active | `CreatePact(3.0 GNOT)` + `ClaimPact(2)` + `SubmitMilestone(2, 0)` | `#1423841`–`#1423844` | `QQtpj5b9z4wXQOfu0n3roocMGdTKKuXXEtyNk/LSwBQ=` |
+| Pact #3 Open | `CreatePact(1.5 GNOT)` (`OPEN`) | `#1423845` | `ADPanKAcSxBt7feFbkvpi+kQc+ZjAOgYDpx65vpB1r0=` |
 
 ---
 
